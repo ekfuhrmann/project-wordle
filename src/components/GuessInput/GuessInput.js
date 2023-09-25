@@ -1,6 +1,6 @@
 import React from "react";
 
-function GuessInput({ handleGuess }) {
+function GuessInput({ handleGuess, gameStatus }) {
   const [tentativeGuess, setTentativeGuess] = React.useState("");
 
   return (
@@ -21,6 +21,7 @@ function GuessInput({ handleGuess }) {
           onChange={(event) =>
             setTentativeGuess(event.target.value.toUpperCase())
           }
+          disabled={gameStatus !== "running"}
           pattern="[a-zA-Z]{5}"
           onInvalid={(event) => {
             event.target.setCustomValidity(

@@ -6,8 +6,8 @@ import Guess from "../Guess";
 function GuessResults({ guesses }) {
   return (
     <ul className="guess-results">
-      {guesses.map(({ word, id }) => (
-        <Guess key={id} word={word} />
+      {guesses.map(({ word, id, letterCheck }) => (
+        <Guess key={id} word={word} letterCheck={letterCheck} />
       ))}
       {range(NUM_OF_GUESSES_ALLOWED - guesses.length).map((index) => (
         <Guess key={index} />

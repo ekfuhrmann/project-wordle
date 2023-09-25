@@ -1,13 +1,25 @@
 import React from "react";
 import { range } from "../../utils";
 
-function Guess({ word }) {
+function Cell({ letter, status }, index) {
+  const className = status ? `cell ${status}` : `cell`;
+
+  return (
+    <span key={crypto.randomUUID()} className={className}>
+      {letter ? letter : undefined}
+    </span>
+  );
+}
+
+function Guess({ word, letterCheck }) {
   return (
     <li className="guess">
       {range(5).map((num) => (
-        <span key={num} className="cell">
-          {word ? word[num] : undefined}
-        </span>
+        <Cell
+          key={num}
+          letter={word && word[num]}
+          status={letterCheck && letterCheck[num].status}
+        />
       ))}
     </li>
   );
